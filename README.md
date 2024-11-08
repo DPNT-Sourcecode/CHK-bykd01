@@ -1,16 +1,13 @@
-[![Python Version](http://img.shields.io/badge/Python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
-
-# tdl-warmup-python
+# tdl-warmup-nodejs
 
 
 ## 1. Requirements
 
-- `Python 3.12`
-- `pip` (ensure it supports `Python 3.12`)
-
+- `Node 6.1.0`
+- `NPM 3.6.0`
 
 ## 2. How to start
 
-- Install dependencies `pip install -r requirements.txt`
-- Open `lib/send_command_to_server.py`
+- Install dependencies `npm install`
+- Open `lib/send_command_to_server.js`
 - Read the comments as documentation, they will guide through the rest of the setup
