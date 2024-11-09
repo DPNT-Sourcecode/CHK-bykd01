@@ -40,7 +40,7 @@ def checkout(skus):
     for key in items.keys():
         items[key] = skus.count(key)
 
-    if (items["F"] - items["F"] % 2) % 2 == 0:
+    if (items["F"] - items["F"] % 2) % 2 == 0 and items["F"] >= 2:
         items["F"] -= (items["F"] // 2)-1
 
     if (items["E"] - items["E"] % 2) % 2 == 0 and items["B"] >= 1:
@@ -71,3 +71,4 @@ def checkout(skus):
     total += items["F"] * 10
 
     return total
+
