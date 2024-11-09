@@ -95,36 +95,46 @@ def checkout(skus):
         total += (bulkDiscount // 3) * 45
         bulkDiscount = bulkDiscount % 3
 
-        if items["X"]["count"] != 0:
+        if items["X"]["count"] != 0 and bulkDiscount <= 1:
             if bulkDiscount > items["X"]["count"]:
                 total += items["X"]["count"] * items["X"]["value"]
-                bulkDiscount -= items["X"]["count"]
             else:
                 total += bulkDiscount * items["X"]["value"]
-        elif items["S"]["count"] != 0:
+            
+            bulkDiscount -= items["X"]["count"]
+        
+        if items["S"]["count"] != 0 and bulkDiscount <= 1:
             if bulkDiscount > items["S"]["count"]:
                 total += items["S"]["count"] * items["S"]["value"]
-                bulkDiscount -= items["S"]["count"]
             else:
                 total += bulkDiscount * items["S"]["value"]
-        elif items["T"]["count"] != 0:
+            
+            bulkDiscount -= items["S"]["count"]
+        
+        if items["T"]["count"] != 0 and bulkDiscount <= 1:
             if bulkDiscount > items["T"]["count"]:
                 total += items["T"]["count"] * items["T"]["value"]
-                bulkDiscount -= items["T"]["count"]
             else:
                 total += bulkDiscount * items["T"]["value"]
-        elif items["Y"]["count"] != 0:
+            
+            bulkDiscount -= items["T"]["count"]
+
+        
+        if items["Y"]["count"] != 0 and bulkDiscount <= 1:
             if bulkDiscount > items["Y"]["count"]:
                 total += items["Y"]["count"] * items["Y"]["value"]
-                bulkDiscount -= items["Y"]["count"]
             else:
                 total += bulkDiscount * items["Y"]["value"]
-        else:
+            
+            bulkDiscount -= items["Y"]["count"]
+        
+        if items["Z"]["count"] != 0 and bulkDiscount <= 1:
             if bulkDiscount > items["Z"]["count"]:
                 total += items["Z"]["count"] * items["Z"]["value"]
-                bulkDiscount -= items["Z"]["count"]
             else:
                 total += bulkDiscount * items["Z"]["value"]
+
+            bulkDiscount -= items["Z"]["count"]
 
         for item in ["S", "T", "X", "Y", "Z"]:
             items[item]["count"] = 0
@@ -133,3 +143,4 @@ def checkout(skus):
         total += item["count"] * item["value"]
 
     return total
+
