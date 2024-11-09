@@ -92,14 +92,39 @@ def checkout(skus):
     bulkDiscount = items["S"]["count"] + items["T"]["count"] + items["X"]["count"] + items["Y"]["count"] + items["Z"]["count"]
 
     if bulkDiscount >= 3:
-        if items["X"]["count"] != 0:
-            total += (bulkDiscount % 3) * items["X"]["value"]
-        elif items["S"]["count"] != 0 or items["T"]["count"] != 0 or items["Y"]["count"] != 0:
-            total += (bulkDiscount % 3) * items["S"]["value"]
-        else:
-            total += (bulkDiscount % 3) * items["Z"]["value"]
-
         total += (bulkDiscount // 3) * 45
+        bulkDiscount -= bulkDiscount // 3
+
+        if items["X"]["count"] != 0:
+            if bulkDiscount > items["X"]["count"]:
+                total += items["X"]["count"] * items["X"]["value"]
+                bulkDiscount -= items["X"]["count"]
+            else:
+                total += bulkDiscount * items["X"]["value"]
+        elif items["S"]["count"] != 0:
+            if bulkDiscount > items["S"]["count"]:
+                total += items["S"]["count"] * items["S"]["value"]
+                bulkDiscount -= items["S"]["count"]
+            else:
+                total += bulkDiscount * items["S"]["value"]
+        elif items["T"]["count"] != 0:
+            if bulkDiscount > items["T"]["count"]:
+                total += items["T"]["count"] * items["T"]["value"]
+                bulkDiscount -= items["T"]["count"]
+            else:
+                total += bulkDiscount * items["T"]["value"]
+        elif items["Y"]["count"] != 0:
+            if bulkDiscount > items["Y"]["count"]:
+                total += items["Y"]["count"] * items["Y"]["value"]
+                bulkDiscount -= items["Y"]["count"]
+            else:
+                total += bulkDiscount * items["Y"]["value"]
+        else:
+            if bulkDiscount > items["Z"]["count"]:
+                total += items["Z"]["count"] * items["Z"]["value"]
+                bulkDiscount -= items["Z"]["count"]
+            else:
+                total += bulkDiscount * items["Z"]["value"]
 
         for item in ["S", "T", "X", "Y", "Z"]:
             items[item]["count"] = 0
