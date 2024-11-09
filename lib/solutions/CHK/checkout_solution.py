@@ -93,5 +93,3 @@ def checkout(skus):
         total += item["count"] * item["value"]
 
     return total
-
-
