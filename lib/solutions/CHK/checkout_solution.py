@@ -34,6 +34,12 @@ def checkout(skus):
         else:
             items["F"] -= items["F"] // 2
 
+    if (items["U"] - items["U"] % 3) % 3 == 0 and items["U"] >= 3:
+        if items["U"] % 3 == 0:
+            items["U"] -= (items["U"] // 3)-1
+        else:
+            items["U"] -= items["U"] // 3
+
     if (items["E"] - items["E"] % 2) % 2 == 0 and items["B"] >= 1:
         items["B"] -= items["E"] // 2
 
