@@ -9,14 +9,14 @@ def checkout(skus):
         "E": {"count": 0, "value": 40}, "F": {"count": 0, "value": 10},
         "G": {"count": 0, "value": 20}, "H": {"count": 0, "value": 10},
         "I": {"count": 0, "value": 35}, "J": {"count": 0, "value": 60},
-        "K": {"count": 0, "value": 80}, "L": {"count": 0, "value": 90},
+        "K": {"count": 0, "value": 70}, "L": {"count": 0, "value": 90},
         "M": {"count": 0, "value": 15}, "N": {"count": 0, "value": 40},
         "O": {"count": 0, "value": 10}, "P": {"count": 0, "value": 50},
         "Q": {"count": 0, "value": 30}, "R": {"count": 0, "value": 50},
-        "S": {"count": 0, "value": 30}, "T": {"count": 0, "value": 20},
+        "S": {"count": 0, "value": 20}, "T": {"count": 0, "value": 20},
         "U": {"count": 0, "value": 40}, "V": {"count": 0, "value": 50},
-        "W": {"count": 0, "value": 20}, "X": {"count": 0, "value": 90},
-        "Y": {"count": 0, "value": 10}, "Z": {"count": 0, "value": 50},
+        "W": {"count": 0, "value": 20}, "X": {"count": 0, "value": 17},
+        "Y": {"count": 0, "value": 20}, "Z": {"count": 0, "value": 21},
         }
     
     total = 0
@@ -78,7 +78,7 @@ def checkout(skus):
         items["B"]["count"] = items["B"]["count"] % 2
 
     if items["K"]["count"] >= 2:
-        total += (items["K"]["count"] // 2) * 150
+        total += (items["K"]["count"] // 2) * 120
         items["K"]["count"] = items["K"]["count"] % 2
 
     if items["P"]["count"] >= 5:
@@ -88,6 +88,21 @@ def checkout(skus):
     if items["Q"]["count"] >= 3:
         total += (items["Q"]["count"] // 3) * 80
         items["Q"]["count"] = items["Q"]["count"] % 3
+
+    bulkDiscount = items["S"]["count"] + items["T"]["count"] + items["X"]["count"] + items["Y"]["count"] + items["Z"]["count"]
+
+    if bulkDiscount >= 3:
+        if items["X"]["count"] != 0:
+            total += (bulkDiscount % 3) * items["X"]["value"]
+        elif items["S"]["count"] != 0 or items["T"]["count"] != 0 or items["Y"]["count"] != 0:
+            total += (bulkDiscount % 3) * items["S"]["value"]
+        else:
+            total += (bulkDiscount % 3) * items["Z"]["value"]
+
+        total += (bulkDiscount // 3) * 45
+
+        for item in ["S", "T", "X", "Y", "Z"]:
+            items[item]["count"] = 0
 
     for item in items.values():
         total += item["count"] * item["value"]
