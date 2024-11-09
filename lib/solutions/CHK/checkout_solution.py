@@ -74,6 +74,3 @@ def checkout(skus):
     total += items["F"] * 10
 
     return total
-
-
-
