@@ -93,7 +93,7 @@ def checkout(skus):
 
     if bulkDiscount >= 3:
         total += (bulkDiscount // 3) * 45
-        bulkDiscount -= bulkDiscount // 3
+        bulkDiscount = bulkDiscount % 3
 
         if items["X"]["count"] != 0:
             if bulkDiscount > items["X"]["count"]:
