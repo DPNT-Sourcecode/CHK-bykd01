@@ -30,7 +30,7 @@ def checkout(skus):
 
     # return total
 
-    items = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0}
+    items = {"A": 0, "B": 0, "C": 0, "D": 0, "E": 0, "F": 0}
     total = 0
 
     for item in skus:
@@ -39,6 +39,9 @@ def checkout(skus):
     
     for key in items.keys():
         items[key] = skus.count(key)
+
+    if (items["F"] - items["F"] % 2) % 2 == 0:
+        items["F"] -= items["F"] // 2
 
     if (items["E"] - items["E"] % 2) % 2 == 0 and items["B"] >= 1:
         items["B"] -= items["E"] // 2
@@ -64,5 +67,7 @@ def checkout(skus):
     total += items["D"] * 15
 
     total += items["E"] * 40
+
+    total += items["F"] * 10
 
     return total
