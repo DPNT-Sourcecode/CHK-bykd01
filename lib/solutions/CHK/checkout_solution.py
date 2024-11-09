@@ -28,69 +28,70 @@ def checkout(skus):
     for key in items.keys():
         items[key]["count"] = skus.count(key)
 
-    if (items["F"] - items["F"] % 2) % 2 == 0 and items["F"] >= 2:
-        if items["F"] % 2 == 0:
-            items["F"] -= (items["F"] // 2)-1
+    if (items["F"]["count"] - items["F"]["count"] % 2) % 2 == 0 and items["F"]["count"] >= 2:
+        if items["F"]["count"] % 2 == 0:
+            items["F"]["count"] -= (items["F"]["count"] // 2)-1
         else:
-            items["F"] -= items["F"] // 2
+            items["F"]["count"] -= items["F"]["count"] // 2
 
-    if (items["U"] - items["U"] % 3) % 3 == 0 and items["U"] >= 3:
-        if items["U"] % 3 == 0:
-            items["U"] -= (items["U"] // 3)-1
+    if (items["U"]["count"] - items["U"]["count"] % 3) % 3 == 0 and items["U"]["count"] >= 3:
+        if items["U"]["count"] % 3 == 0:
+            items["U"]["count"] -= (items["U"]["count"] // 3)-1
         else:
-            items["U"] -= items["U"] // 3
+            items["U"]["count"] -= items["U"]["count"] // 3
 
-    if (items["E"] - items["E"] % 2) % 2 == 0 and items["B"] >= 1:
-        items["B"] -= items["E"] // 2
+    if (items["E"]["count"] - items["E"]["count"] % 2) % 2 == 0 and items["B"]["count"] >= 1:
+        items["B"]["count"] -= items["E"]["count"] // 2
 
-    if (items["N"] - items["N"] % 3) % 3 == 0 and items["M"] >= 1:
-        items["M"] -= items["N"] // 3
+    if (items["N"]["count"] - items["N"]["count"] % 3) % 3 == 0 and items["M"]["count"] >= 1:
+        items["M"]["count"] -= items["N"]["count"] // 3
 
-    if (items["R"] - items["R"] % 3) % 3 == 0 and items["Q"] >= 1:
-        items["Q"] -= items["R"] // 3
+    if (items["R"]["count"] - items["R"]["count"] % 3) % 3 == 0 and items["Q"]["count"] >= 1:
+        items["Q"]["count"] -= items["R"]["count"] // 3
 
-    if items["A"] >= 5:
-        total += (items["A"] // 5) * 200
-        items["A"] = items["A"] % 5
+    if items["A"]["count"] >= 5:
+        total += (items["A"]["count"] // 5) * 200
+        items["A"]["count"] = items["A"]["count"] % 5
 
-    if items["A"] >= 3:
-        total += (items["A"] // 3) * 130
-        items["A"] = items["A"] % 3
+    if items["A"]["count"] >= 3:
+        total += (items["A"]["count"] // 3) * 130
+        items["A"]["count"] = items["A"]["count"] % 3
 
-    if items["H"] >= 10:
-        total += (items["H"] // 10) * 80
-        items["H"] = items["H"] % 10
+    if items["H"]["count"] >= 10:
+        total += (items["H"]["count"] // 10) * 80
+        items["H"]["count"] = items["H"]["count"] % 10
 
-    if items["H"] >= 5:
-        total += (items["H"] // 5) * 45
-        items["H"] = items["H"] % 5
+    if items["H"]["count"] >= 5:
+        total += (items["H"]["count"] // 5) * 45
+        items["H"]["count"] = items["H"]["count"] % 5
 
-    if items["V"] >= 3:
-        total += (items["V"] // 3) * 130
-        items["V"] = items["V"] % 3
+    if items["V"]["count"] >= 3:
+        total += (items["V"]["count"] // 3) * 130
+        items["V"]["count"] = items["V"]["count"] % 3
 
-    if items["V"] >= 2:
-        total += (items["V"] // 2) * 90
-        items["V"] = items["V"] % 2
+    if items["V"]["count"] >= 2:
+        total += (items["V"]["count"] // 2) * 90
+        items["V"]["count"] = items["V"]["count"] % 2
 
-    if items["B"] >= 2:
-        total += (items["B"] // 2) * 45
-        items["B"] = items["B"] % 2
+    if items["B"]["count"] >= 2:
+        total += (items["B"]["count"] // 2) * 45
+        items["B"]["count"] = items["B"]["count"] % 2
 
-    if items["K"] >= 2:
-        total += (items["K"] // 2) * 150
-        items["K"] = items["K"] % 2
+    if items["K"]["count"] >= 2:
+        total += (items["K"]["count"] // 2) * 150
+        items["K"]["count"] = items["K"]["count"] % 2
 
-    if items["P"] >= 5:
-        total += (items["P"] // 5) * 200
-        items["P"] = items["P"] % 5
+    if items["P"]["count"] >= 5:
+        total += (items["P"]["count"] // 5) * 200
+        items["P"]["count"] = items["P"]["count"] % 5
 
-    if items["Q"] >= 3:
-        total += (items["Q"] // 3) * 80
-        items["Q"] = items["Q"] % 3
+    if items["Q"]["count"] >= 3:
+        total += (items["Q"]["count"] // 3) * 80
+        items["Q"]["count"] = items["Q"]["count"] % 3
 
     for item in items.values():
         total += item["count"] * item["value"]
 
     return total
+
 
