@@ -26,7 +26,7 @@ def checkout(skus):
             return -1
     
     for key in items.keys():
-        items[key] = skus.count(key)
+        items[key]["count"] = skus.count(key)
 
     if (items["F"] - items["F"] % 2) % 2 == 0 and items["F"] >= 2:
         if items["F"] % 2 == 0:
@@ -93,3 +93,4 @@ def checkout(skus):
         total += item["count"] * item["value"]
 
     return total
+
